@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useLanguage } from 'react-intl-lil';
 import './App.css';
 
