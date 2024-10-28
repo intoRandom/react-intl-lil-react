@@ -1,11 +1,14 @@
 import { useLanguage } from 'react-intl-lil';
 import './App.css';
 
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
 function App() {
   const { gs, ga } = useLanguage();
   return (
     <div className='flex justify-center w-full text-start'>
-      <div className='flex flex-col gap-6 w-full max-w-3xl p-5 items-start'>
+      <div className='flex flex-col gap-6 w-full max-w-3xl  items-start'>
         <div>{gs('home.subtitle')}</div>
 
         <section className='flex flex-col gap-3 w-full'>
@@ -34,7 +37,9 @@ function App() {
         <section className='flex flex-col gap-2'>
           <h3 className='text-lg'>{gs('home.inst.title')}</h3>
           <div>{gs('home.inst.data')}</div>
-          <pre className='border-2 p-3'>npm install react-intl-lil</pre>
+          <SyntaxHighlighter language='javascript' style={a11yDark}>
+            npm install react-intl-lil
+          </SyntaxHighlighter>
         </section>
 
         <section className='flex flex-col gap-2 text-wrap max-w-full'>
@@ -45,13 +50,15 @@ function App() {
             {ga('home.config.files').map((file, index) => (
               <li key={index} className='flex flex-col gap-2'>
                 <div>{file.data}</div>
-                <pre className='border-2 p-3 overflow-auto'>{file.file}</pre>
+                <SyntaxHighlighter language='javascript' style={a11yDark}>
+                  {file.file}
+                </SyntaxHighlighter>
               </li>
             ))}
           </ul>
         </section>
 
-        <section className='flex flex-col gap-2 py-10'>
+        <section className='flex flex-col gap-2 py-5'>
           <div>{gs('home.final')}</div>
           <a href={'https://buymeacoffee.com/intorandom'} className='underline'>
             Buy me a coffee
